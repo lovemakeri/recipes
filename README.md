@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Recipes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
@@ -26,3 +27,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# recipes
+This web app will help you find food or drink recipe at any taste. The application has been developed on Angular 4
+>>>>>>> 6fd82200d201624871117d27f8a31cab6fba9860
