@@ -1,0 +1,4 @@
+recipes@0.0.0 C:\work\angular\recipes
++-- jquery@3.2.1 
+`-- UNMET PEER DEPENDENCY popper.js@^1.11.0
+

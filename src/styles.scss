@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+// version 4
+@import 'variables';
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+$box-shadow:    0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+div.polaroid {
+    width: 20%;
+    background-color: white;
+    box-shadow: $box-shadow;
+    float: left;
+    display: block;
+    margin: 20px 20px 0px 0px;
+}
+
+div.polaroid-big {
+    img {
+        max-width: 60%;
+        width: auto;
+        height: auto;
+        box-shadow: $box-shadow;
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+app-spinner
+{
+    width: 441px;
+    height: 291px;
+    display: block;
+    margin: 0 auto;
+    text-align:  center;
+    background-image: url("assets/loading.gif");
+}

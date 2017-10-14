@@ -1,0 +1,13 @@
+
+
+<div class="polaroid-big" *ngIf="recipe">
+    <h1>{{recipe.title}}</h1>
+      <img [src]="recipe.image_url" [alt]="recipe.title" >
+      <div class="text-container">
+        <p>Ingredients: </p>
+          <ul><li *ngFor="let ingredient of recipe.ingredients">{{ingredient}} </li>
+        </ul>
+      
+      </div>
+      
+    </div>

@@ -1,0 +1,14 @@
+
+
+<router-outlet></router-outlet>
+
+      <div *ngFor="let recipe of recipes" class="polaroid">
+        <!--a [routerLink]="['/recipe', recipe.recipe_id]" (click)="openRecipe(recipe.recipe_id)"-->
+          <a (click)="openRecipe(recipe.recipe_id)">
+          <img [src]="recipe.image_url" [alt]="recipe.title" style="width:100%">
+          <div class="text-container">
+            <p>{{recipe.title}}</p>
+          </div>
+          </a>
+        </div>
+ 
