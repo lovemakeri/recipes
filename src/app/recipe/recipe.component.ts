@@ -1,38 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService, RecipeDetails, SingleRecipe } from '../api.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ApiService, Cocktail } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-recipe',
+  selector: 'recipes',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss']
 })
-export class RecipeComponent implements OnInit {
-id : number;
-recipe :SingleRecipe;
-isRequesting: boolean;
+export class RecipesComponent implements OnInit {
+  cocktails : Cocktail[];
+  category: string;
 
-  constructor( private apiService :ApiService, private route : ActivatedRoute, private router: Router ) { }
+  constructor( private apiService : ApiService, private router: Router ) { }
 
   ngOnInit() {
-    
-   
-   this.route.params.subscribe( params => {
-     this.id = params['id'];
-    // console.log(this.id);
-
-     this.apiService.getRecipe(this.id).subscribe(resp=>
+    this.apiService.cocktailsSubject.subscribe( recipes =>
       {
-        this.recipe = resp.recipe;
-        this.apiService.doRequest(false);       
+        this.cocktails = recipes;
       });
-
-    
-   });
-
-    
-   
-
   }
+
+
+openCocktail(id)
+{  
+  this.cocktails = null;
+  this.category = null;
+  this.apiService.doRequest(true);
+  this.router.navigate(['/cocktail', id]);
+  
+}
 
 }

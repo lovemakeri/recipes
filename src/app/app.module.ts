@@ -9,8 +9,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ApiService } from './api.service';
 import { SearchComponent } from './search/search.component';
 import { SearchresultsComponent } from './searchresults/searchresults.component';
-import { RecipeComponent } from './recipe/recipe.component';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { RecipesComponent } from './recipe/recipe.component';
+import { SpinnerDirective } from './spinner/spinner.directive';
+import { CocktailComponent } from './cocktail/cocktail.component';
+import { LeftnavComponent } from './leftnav/leftnav.component';
+import { CategoryComponent } from './category/category.component';
+
 
 @NgModule({
   declarations: [
@@ -18,8 +22,12 @@ import { SpinnerComponent } from './spinner/spinner.component';
     NavbarComponent,
     SearchComponent,
     SearchresultsComponent,
-    RecipeComponent,
-    SpinnerComponent
+    RecipesComponent,
+    SpinnerDirective,
+    CocktailComponent,
+    LeftnavComponent,
+    CategoryComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -27,8 +35,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HttpModule,
     RouterModule.forRoot(
       [
-{ path : '', component: SearchresultsComponent},
-{  path : 'recipe/:id', component: RecipeComponent }
+{ path : '', component: CategoryComponent},
+{ path : 'search', component: SearchresultsComponent},
+{ path : 'cocktail/:id', component: CocktailComponent }
 
 
       ]

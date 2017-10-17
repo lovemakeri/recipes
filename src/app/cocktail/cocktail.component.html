@@ -1,0 +1,32 @@
+
+<div class="polaroid-big" *ngIf="cocktail">
+    <h1>{{cocktail.strDrink}}</h1>
+      <img [src]="cocktail.strDrinkThumb" [alt]="cocktail.strDrink" >
+      <div class="text-container">
+        
+          <h3>Ingredients</h3> 
+        
+          <ul>
+          <li *ngIf="cocktail.strIngredient1">{{cocktail.strIngredient1}} </li>
+          <li *ngIf="cocktail.strIngredient2">{{cocktail.strIngredient2}} </li>
+          <li *ngIf="cocktail.strIngredient3">{{cocktail.strIngredient3}} </li>
+          <li *ngIf="cocktail.strIngredient4">{{cocktail.strIngredient4}} </li>
+          <li *ngIf="cocktail.strIngredient5">{{cocktail.strIngredient5}} </li>
+          <li *ngIf="cocktail.strIngredient6">{{cocktail.strIngredient6}} </li>
+          <li *ngIf="cocktail.strIngredient7">{{cocktail.strIngredient7}} </li>
+          <li *ngIf="cocktail.strIngredient8">{{cocktail.strIngredient8}} </li>
+          <li *ngIf="cocktail.strIngredient9">{{cocktail.strIngredient9}} </li>
+          <li *ngIf="cocktail.strIngredient10">{{cocktail.strIngredient10}} </li>
+          <li *ngIf="cocktail.strIngredient11">{{cocktail.strIngredient11}} </li>
+          <li *ngIf="cocktail.strIngredient12">{{cocktail.strIngredient12}} </li>
+          <li *ngIf="cocktail.strIngredient13">{{cocktail.strIngredient13}} </li>
+          <li *ngIf="cocktail.strIngredient14">{{cocktail.strIngredient14}} </li>
+          <li *ngIf="cocktail.strIngredient15">{{cocktail.strIngredient15}} </li>
+        </ul>
+
+        <h3> Instructions</h3>
+          <p> {{cocktail.strInstructions}} </p>
+      
+      </div>
+      
+    </div>

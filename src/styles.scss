@@ -6,6 +6,19 @@
 
 $box-shadow:    0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+body
+{
+    background-image: url("assets/bg.jpg");
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: none; 
+
+} 
+
+h1 {
+    text-align: center;
+    }
+
 div.polaroid {
     width: 20%;
     background-color: white;
@@ -24,6 +37,15 @@ div.polaroid-big {
         margin: 0 auto;
         text-align: center;
       }
+
+   
+        
+        
+        div.text-container {
+            text-align: left;
+            padding: 10px 20px;
+        }
+
     }
 app-spinner
 {
@@ -34,3 +56,10 @@ app-spinner
     text-align:  center;
     background-image: url("assets/loading.gif");
 }
+
+div.polaroid-big {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+}
+

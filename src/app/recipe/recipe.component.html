@@ -1,13 +1,10 @@
 
 
-<div class="polaroid-big" *ngIf="recipe">
-    <h1>{{recipe.title}}</h1>
-      <img [src]="recipe.image_url" [alt]="recipe.title" >
+<div *ngFor="let cocktail of cocktails" class="polaroid">
+    <a (click)="openCocktail(cocktail.idDrink)">
+      <img [src]="cocktail.strDrinkThumb" [alt]="cocktail.strDrink" style="width:100%">
       <div class="text-container">
-        <p>Ingredients: </p>
-          <ul><li *ngFor="let ingredient of recipe.ingredients">{{ingredient}} </li>
-        </ul>
-      
+        <p>{{cocktail.strDrink}}</p>
       </div>
-      
-    </div>
+    </a>
+</div>

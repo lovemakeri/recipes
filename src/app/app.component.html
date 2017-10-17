@@ -1,11 +1,24 @@
-
+<div class="container">
 <app-navbar></app-navbar>
+</div>
 
 <div class="container">
 
-    <app-spinner *ngIf="isRequesting"></app-spinner>
-  
-  <app-searchresults></app-searchresults>
+    <div class="row">
+        <aside id="column-left" class="col-sm-3">
+            <leftnav></leftnav>
+        </aside>
+        
+        <div id="content" class="col-sm-9">
+
+   <app-spinner *ngIf="isRequesting"></app-spinner>
+   <router-outlet></router-outlet>
+  <!--app-searchresults></app-searchresults-->
+          
+        </div>
+</div>
+
+ 
 
 </div>
 

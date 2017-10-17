@@ -1,8 +1,20 @@
 <form class="form-inline my-2 my-lg-0"  #searchForm="ngForm" (ngSubmit)="submitForm()">
+
+    <div class="input-group" >
+      <!--select name="searchtype" id = "searchtype" [(ngModel)]="searchtype">
+        <option value="name">name</option>
+        <option value="ingredient">ingredient</option>
+      </select-->
+                 <input type="radio" id="name1" checked 
+                 [(ngModel)]="searchtype" name="searchtype" value="name">
+                 <label for="name1">name</label>
+             
+                 <input type="radio" id="ingredient1"
+                 [(ngModel)]="searchtype" name="searchtype" value="ingredient">
+                 <label for="ingredient1">ingredient</label>
+     </div>
+
   <input [(ngModel)]="query" name="query" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-  <!--div [hidden]="query.valid || query.pristine"
-  class="alert alert-danger">
-Search query is required
-</div-->
+ 
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form>

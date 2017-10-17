@@ -1,0 +1,6 @@
+<ul class="nav flex-column nav-pills nav-fill">
+    <li *ngFor="let category of categories" class="nav-item">
+      <a class="nav-link active" (click)="selectCategory(category.strCategory)" style="cursor:pointer;">{{category.strCategory}}</a>
+    </li>
+    
+  </ul>

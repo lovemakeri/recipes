@@ -10,103 +10,172 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ApiService {
 
-  searchUrl : string = 'http://food2fork.com/api/search';
-  recipeUrl : string = 'http://food2fork.com/api/get';
-  key: string = 'f7955bf7202661b93a8e37608f995182';
-  recipes : Recipe[];
+  cocktailUrl : string = 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  ingredientUrl : string = 'http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
+  cocktailRecipeUrl : string = 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
-  recipe : SingleRecipe;
 
-  result : Result;
+  cocktails : CocktailRecipe[];
+
+  resultCocktail : CocktailRecipes;
 
   constructor(private http : Http) {  }
 
-  searchSubject = new Subject<string>();
-
+  
   isRequesting = new Subject<Boolean>();
 
-   makeSearch(query)
-   {
-   this.searchSubject.next(query);
-   }
+  cocktailSubject = new Subject<CocktailRecipe>();
 
-   doRequest(param)
+  categorySubject = new Subject<string>();
+
+  cocktailsSubject = new Subject<Cocktail[]>();
+
+
+  doRequest(param)
    {
     this.isRequesting.next(param);
    }
 
-
-   searchRequest(query) : Promise<Recipe[]>
-   {
-    let myUrl = this.searchUrl + '?key='+this.key+'&q='+query;
-
-    return new Promise(resolve => {
-this.http.get(myUrl).toPromise().then(resp=>{
-  this.result = resp.json();
-  this.recipes = this.result.recipes;
-  resolve(this.recipes);
-
-})
-.catch(error => {
-  
-      console.log(error.status);
-      console.log(error.error); 
-      console.log(error.headers);
-  
-    });
-    
-    }); 
-    
+  showCocktails(cocktails)
+    {
+      this.cocktailsSubject.next(cocktails);
     }
 
-    getRecipe(id) : Observable<RecipeDetails>
+   showCocktail(cocktail)
+   {
+   this.cocktailSubject.next(cocktail);
+   }
+
+   showCategory(cat)
+   {
+     this.categorySubject.next(cat);
+   }
+
+   getCategories()  : Observable<Drinks>
+   {
+    let myUrl = "http://www.thecocktaildb.com/api/json/v1/1/list.php?c=list";
+    
+        return this.http.get(myUrl)
+        
+         .map((res:Response) => res.json())
+        
+         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+   }
+
+   getCategory(cat) : Observable<Cocktails>
+   {
+    let myUrl = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c="+cat;
+    
+        return this.http.get(myUrl)
+        
+         .map((res:Response) => res.json())
+        
+         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+   }
+
+
+   cocktailRequest(query, qUrl) : Observable<Cocktail[]>
+   {
+    let myUrl = qUrl +query;
+
+    return this.http.get(myUrl)
+    
+     .map((res:Response) => {
+       res.json();
+       this.resultCocktail = res.json();
+       this.cocktails = this.resultCocktail.drinks;
+       return this.cocktails;    
+    })
+    
+     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+    }
+
+
+  
+    getCocktailRecipe(id) : Observable<CocktailRecipes>
     {
-     let myUrl = this.recipeUrl + '?key='+this.key+'&rId='+id;
+     let myUrl = this.cocktailRecipeUrl + id;
  
      return this.http.get(myUrl)
      
       .map((res:Response) => res.json())
      
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-     
-     }
- 
+    }
+ }
 
+ export interface Drinks
+ {
+drinks : Category[];
+
+ }
+
+export interface Category
+{
+  strCategory: string;
 }
 
-export interface Recipe
-{
-  publisher : string;
-  f2f_url : string;
-  title: string;
-  source_url: string;
-  recipe_id: string;
-  image_url: string;
-  social_rank: number;
-  publisher_url: string;
 
+
+
+export interface Cocktails
+{
+  drinks: Cocktail[];
 }
 
-export interface Result
+export interface Cocktail
 {
-  count : number;
-  recipes : Recipe[];
+  strDrink : string;
+  strDrinkThumb : string;
+  idDrink : string;
 }
 
-export interface RecipeDetails
+export interface CocktailRecipes
 {
-  recipe : SingleRecipe;
+  drinks: CocktailRecipe[];
 }
 
-export interface SingleRecipe
+export interface CocktailRecipe
 {
-  publisher : string;
-  f2f_url : string;
-  ingredients: string[];
-  source_url: string;
-  recipe_id: string;
-  image_url: string;
-  social_rank: number;
-  publisher_url: string;
-  title: string;
+  idDrink : string;
+  strDrink : string;
+  strVideo : any;
+  strCategory : string;
+  strIBA : string;
+  strAlcoholic : string;
+  strGlass : string;
+  strInstructions : number;
+  strDrinkThumb : string;
+  strIngredient1 : string;
+  strIngredient2 : string;
+  strIngredient3 : string;
+  strIngredient4 : string;
+  strIngredient5 : string;
+  strIngredient6 : string;
+  strIngredient7 : string;
+  strIngredient8 : string; 
+  strIngredient9 : string;
+  strIngredient10 : string;
+  strIngredient11 : string;
+  strIngredient12 : string;
+  strIngredient13 : string;
+  strIngredient14 : string;
+  strIngredient15 : string;
+  strMeasure1 : string;
+  strMeasure2 : string;
+  strMeasure3 : string;
+  strMeasure4 : string;
+  strMeasure5 : string;
+  strMeasure6 : string;
+  strMeasure7 : string;
+  strMeasure8 : string; 
+  strMeasure9 : string;
+  strMeasure10 : string;
+  strMeasure11 : string;
+  strMeasure12 : string;
+  strMeasure13 : string;
+  strMeasure14 : string;
+  strMeasure15 : string;
+  dateModified: string;
 }

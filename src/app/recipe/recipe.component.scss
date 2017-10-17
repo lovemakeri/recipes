@@ -1,22 +1,14 @@
 
-
-
-div.polaroid-big {
-    background-color: white;
-    width: 100%;
-    text-align: center;
-}
-
-div.polaroid-big {
-
-h1 {
-text-align: center;
-}
-
-
-div.text-container {
-    text-align: left;
-    padding: 10px 20px;
-}
-
-}
+div.polaroid {
+    a {
+          cursor:pointer;
+      }
+  
+  img {width:100%}
+  
+  div.text-container {
+      text-align: center;
+      padding: 10px 20px;
+  }
+  
+  }
